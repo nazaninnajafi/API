@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 4.1.3 (Python 3.8.10 on win32)" generated="20220424 19:19:12.262" rpa="false" schemaversion="2">
+<suite id="s1" name="TestScenario3" source="C:\Users\na.najafi\Desktop\API\TestCase\TestScenario3.robot">
+<test id="s1-t1" name="TestScenario3">
+<kw name="post Request" library="Scenario3">
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${body}</var>
+<arg>email=sydney@fife</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220424 19:19:12.410" level="INFO">${body} = {'email': 'sydney@fife'}</msg>
+<status status="PASS" starttime="20220424 19:19:12.410" endtime="20220424 19:19:12.410"/>
+</kw>
+<kw name="PostReq" library="CommonFunctionality">
+<arg>${base_url}</arg>
+<arg>${relativeUrl}</arg>
+<arg>${body}</arg>
+<kw name="Create Session" library="RequestsLibrary">
+<arg>mysession</arg>
+<arg>${base_url}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20220424 19:19:12.411" level="INFO">Creating Session using : alias=mysession, url=https://reqres.in, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20220424 19:19:12.411" endtime="20220424 19:19:12.412"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${header}</var>
+<arg>Content-type=application/json</arg>
+<arg>Accept=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220424 19:19:12.412" level="INFO">${header} = {'Content-type': 'application/json', 'Accept': 'application/json'}</msg>
+<status status="PASS" starttime="20220424 19:19:12.412" endtime="20220424 19:19:12.412"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>mysession</arg>
+<arg>${relativeUrl}</arg>
+<arg>json=${body}</arg>
+<arg>headers=${header}</arg>
+<arg>expected_status=anything</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20220424 19:19:13.031" level="INFO">POST Request : url=https://reqres.in/api/register 
+ path_url=/api/register 
+ headers={'User-Agent': 'python-requests/2.27.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': 'application/json', 'Connection': 'keep-alive', 'Content-type': 'application/json', 'Content-Length': '24'} 
+ body=b'{"email": "sydney@fife"}' 
+ </msg>
+<msg timestamp="20220424 19:19:13.031" level="INFO">POST Response : url=https://reqres.in/api/register 
+ status=400, reason=Bad Request 
+ headers={'Date': 'Sun, 24 Apr 2022 14:49:15 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '28', 'Connection': 'keep-alive', 'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'CF-Cache-Status': 'DYNAMIC', 'Expect-CT': 'max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"', 'Report-To': '{"endpoints":[{"url":"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=lkg7SV7BauSD5vXwWhUBgEj%2FQHgFYxaI9T2GZpD4lzjOO2xZB1zJIsSOjzFrU0BvFZG6EM%2BjcPnFsgOdD8fL8d4srg%2Bc31ZJGdLH1QqxZc2%2FDr%2BCiIaMIdDEkc4%3D"}],"group":"cf-nel","max_age":604800}', 'NEL': '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}', 'CF-RAY': '700fa4fe589d6d7d-MUC', 'alt-svc': 'h3=":443"; ma=86400, h3-29=":443"; ma=86400', 'Etag': 'W/"1c-NmpazMScs9tOqR7eDEesn+pqC9Q"', 'Via': '1.1 vegur', 'Server': 'cloudflare'} 
+ body={"error":"Missing password"} 
+ </msg>
+<msg timestamp="20220424 19:19:13.032" level="INFO">c:\users\na.najafi\appdata\local\programs\python\python38\lib\site-packages\urllib3\connectionpool.py:1043: InsecureRequestWarning: Unverified HTTPS request is being made to host 'reqres.in'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<msg timestamp="20220424 19:19:13.036" level="INFO">${response} = &lt;Response [400]&gt;</msg>
+<status status="PASS" starttime="20220424 19:19:12.412" endtime="20220424 19:19:13.036"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${response}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20220424 19:19:13.037" level="INFO">${response} = &lt;Response [400]&gt;</msg>
+<status status="PASS" starttime="20220424 19:19:13.036" endtime="20220424 19:19:13.037"/>
+</kw>
+<status status="PASS" starttime="20220424 19:19:12.410" endtime="20220424 19:19:13.037"/>
+</kw>
+<status status="PASS" starttime="20220424 19:19:12.410" endtime="20220424 19:19:13.037"/>
+</kw>
+<kw name="Validation status_code" library="CommonFunctionality">
+<arg>400</arg>
+<kw name="Convert To String" library="BuiltIn">
+<var>${status_code}</var>
+<arg>${response.status_code}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20220424 19:19:13.039" level="INFO">${status_code} = 400</msg>
+<status status="PASS" starttime="20220424 19:19:13.038" endtime="20220424 19:19:13.039"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${status_code}</arg>
+<arg>${num}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20220424 19:19:13.039" endtime="20220424 19:19:13.039"/>
+</kw>
+<status status="PASS" starttime="20220424 19:19:13.037" endtime="20220424 19:19:13.039"/>
+</kw>
+<status status="PASS" starttime="20220424 19:19:12.409" endtime="20220424 19:19:13.040"/>
+</test>
+<status status="PASS" starttime="20220424 19:19:12.264" endtime="20220424 19:19:13.042"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="TestScenario3">TestScenario3</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
